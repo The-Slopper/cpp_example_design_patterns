@@ -3,7 +3,7 @@
 cmake_minimum_required(VERSION 3.27)
 project(cpp_example_design_patterns
         VERSION 1.0.0
-        DESCRIPTION "Demonstracao de padroes de projeto isolando regras de negocio da infraestrutura."
+        DESCRIPTION "Demonstration of design patterns isolating business rules from infrastructure."
         HOMEPAGE_URL "https://git.example.com/cpp-example-design-patterns"
         LANGUAGES CXX)
 

